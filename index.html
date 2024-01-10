@@ -11,8 +11,8 @@
 
 <body>
     <div class="page-actions-container">
-        <div class="page-action">Home</div>
         <div class="page-action">File</div>
+        <div class="page-action">Home</div>
         <div class="page-action">Insert</div>
         <div class="page-action">Layout</div>
         <div class="page-action">Help</div>
@@ -30,8 +30,8 @@
         <select class="font-family-prop">
             <option value="monospace">Monospace</option>
             <option value="sans-serif">Sans-serif</option>
-            <option value="Helvetica">Helvetica</option>
-            <option value="Arial">Arial</option>
+            <option value="cursive">Cursive</option>
+            <option value="fantasy">Fantasy</option>
         </select>
         <select class="font-size-prop">
             <option value="14">14</option>
@@ -39,24 +39,36 @@
             <option value="18">18</option>
             <option value="20">20</option>
         </select>
-        <span class="material-icons">
+        <span class="material-icons bold">
             format_bold
         </span>
-        <span class="material-icons">
+        <span class="material-icons italic">
             format_italic
         </span>
-        <span class="material-icons">
+        <span class="material-icons underlined">
             format_underlined
         </span>
-        <span class="material-icons">
+        <span class="left material-icons alignment">
             format_align_left
         </span>
-        <span class="material-icons">
+        <span class=" center material-icons alignment">
             format_align_center
         </span>
-        <span class="material-icons">
+        <span class="right material-icons alignment">
             format_align_right
         </span>
+        <div class="color-prop">
+            <span class="material-icons">
+                format_color_text
+            </span>
+            <input type="color" class="font-color-props">
+        </div>
+        <div class="color-prop">
+            <span class="material-icons">
+                format_color_fill
+            </span>
+            <input type="color" class="background-color-props">
+        </div>
     </div>
     <div class="formula-actions-container">
         <input type="text" readonly class="address-bar">
@@ -84,7 +96,8 @@
 
 
 
-    <script src="./script.js"></script>
+    <script src="./grid.js"></script>
+    <script src="./cell-properties.js"></script>
 </body>
 
 </html>

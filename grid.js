@@ -27,6 +27,11 @@ for (let i = 0; i < rows; i++) {
         const cell = document.createElement('div')
         cell.setAttribute('class', 'cell');
         cell.setAttribute('contentEditable', 'true');
+        cell.setAttribute('spellchcek', 'false');
+
+        // Attributes for cell and storage identification
+        cell.setAttribute('rid', i);
+        cell.setAttribute('cid', j);
         cell.addEventListener('click', () =>{
             addressBar.value = `${i+1} ${String.fromCharCode(65+j)}`
         })
@@ -34,3 +39,9 @@ for (let i = 0; i < rows; i++) {
     }
     cellsContainer.appendChild(rowCont);
 }
+
+// by default first cell should be active
+
+const firstCell = cellsContainer.querySelector('.cell');
+firstCell.click();
+
