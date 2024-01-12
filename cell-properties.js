@@ -12,6 +12,9 @@ for (let i = 0; i < rows; i++) {
             alignment: 'left',
             fontColor: '#000000',
             bgColor: '#ECF0F1',
+            value: '',
+            formula: '',
+            children: []
         }
         sheetRow.push(cellProps);
     }
@@ -106,6 +109,7 @@ alignment.forEach((align) => {
                 centerAlign.style.backgroundColor = inactiveColorProps;
                 break;
         }
+
     })
 })
 
@@ -126,6 +130,13 @@ function addEventListenerToAttachCellProps(cell) {
         cell.style.fontSize = cellProps.fontSize + 'px';
         cell.style.textAlign = cellProps.alignment;
 
+        bold.style.backgroundColor = cellProps.bold ? activeColorProps : inactiveColorProps;
+        italic.style.backgroundColor = cellProps.italic ? activeColorProps : inactiveColorProps;
+        underlined.style.backgroundColor = cellProps.underline ? activeColorProps : inactiveColorProps;
+        fontColor.value = cellProps.fontColor;
+        bgColor.value = cellProps.bgColor;
+        fontFamily.value = cellProps.fontFamily;
+        fontSize.value = cellProps.fontSize;
 
         switch (cellProps.alignment) {
             case 'left':
@@ -144,20 +155,21 @@ function addEventListenerToAttachCellProps(cell) {
                 centerAlign.style.backgroundColor = inactiveColorProps;
                 break;
         }
-        bold.style.backgroundColor = cellProps.bold ? activeColorProps : inactiveColorProps;
-        italic.style.backgroundColor = cellProps.italic ? activeColorProps : inactiveColorProps;
-        underlined.style.backgroundColor = cellProps.underline ? activeColorProps : inactiveColorProps;
-        fontColor.value = cellProps.fontColor;
-        bgColor.value = cellProps.bgColor;
-        fontFamily.value = cellProps.fontFamily;
-        fontSize.value = cellProps.fontSize;
+        let formulaBar = document.querySelector('.formula-bar');
+        formulaBar.value = cellProps.formula;
+        cell.value = cellProps.value;
     })
 }
 
-function getActiveCell() {
-    let cellAdress = addressBar.value.split(' ');
-    let cid = Number(cellAdress[1].charCodeAt(0)) - 65;
-    let rid = Number(cellAdress[0]) - 1;
+function getActiveCell(address = null) {
+    let cellAdress;
+    if (address) {
+        cellAdress = address.split('');
+    } else {
+        cellAdress = addressBar.value.split('');
+    }
+    let cid = Number(cellAdress[0].charCodeAt(0)) - 65;
+    let rid = Number(cellAdress[1]) - 1;
     let cell = document.querySelector(`.cell[rid="${rid}"][cid="${cid}"]`);
     let cellProps = sheetDb[rid][cid];
     return [cell, cellProps];

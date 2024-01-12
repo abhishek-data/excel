@@ -32,8 +32,8 @@ for (let i = 0; i < rows; i++) {
         // Attributes for cell and storage identification
         cell.setAttribute('rid', i);
         cell.setAttribute('cid', j);
-        cell.addEventListener('click', () =>{
-            addressBar.value = `${i+1} ${String.fromCharCode(65+j)}`
+        cell.addEventListener('click', () => {
+            addressBar.value = `${String.fromCharCode(65 + j)}${i + 1}`
         })
         rowCont.appendChild(cell)
     }
@@ -44,4 +44,6 @@ for (let i = 0; i < rows; i++) {
 
 const firstCell = cellsContainer.querySelector('.cell');
 firstCell.click();
+
+
 
