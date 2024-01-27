@@ -2,7 +2,7 @@
 for (let cell of allCells) {
     cell.addEventListener('blur', (e) => {
         let [activeCell, cellProps] = getActiveCell()
-        let enteredData = cell.innerText;
+        let enteredData = activeCell.innerText;
         if(enteredData=== cellProps.value) return
 
         cellProps.value = enteredData
@@ -90,3 +90,4 @@ function updateChildrenCell(parentAddress) {
         updateChildrenCell(childAdress)
     }
 }
+
