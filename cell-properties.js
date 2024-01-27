@@ -175,3 +175,10 @@ function getActiveCell(address = null) {
     return [cell, cellProps];
 }
 
+function decodeRIDCIDFromAddress(address) {
+    // address -> "A1"
+    let rid = Number(address.slice(1) - 1); // "1" -> 0
+    let cid = Number(address.charCodeAt(0)) - 65; // "A" -> 65
+    return [rid, cid];
+}
+
